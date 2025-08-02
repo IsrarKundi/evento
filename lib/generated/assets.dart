@@ -40,7 +40,7 @@ class Assets {
   static const String imagesEvent1 = 'assets/images/event1.png';
   static const String imagesEvent2 = 'assets/images/event2.png';
   static const String imagesEventoLogo = 'assets/images/evento_logo.png';
-  static const String imagesFacebook = 'assets/images/facebook.png';
+  static const String imagesFacebook = 'assets/images/apple-logo.png';
   static const String imagesGoogle = 'assets/images/google.png';
   static const String imagesHome = 'assets/images/home.png';
   static const String imagesInfoCircle = 'assets/images/info-circle.png';

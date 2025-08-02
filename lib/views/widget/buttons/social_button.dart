@@ -7,7 +7,7 @@ class SocialButton extends StatelessWidget {
   final Function()? onTap;
   final String iconPath;
   final String buttonText;
-  const SocialButton({super.key, this.onTap,this.iconPath=Assets.imagesFacebook,this.buttonText="Facebook"});
+  const SocialButton({super.key, this.onTap,this.iconPath=Assets.imagesFacebook,this.buttonText="Apple"});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,7 @@ class SocialButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CommonImageView(
+              height: 28,
               imagePath: iconPath,
             ),
             SizedBox(width: 10,),

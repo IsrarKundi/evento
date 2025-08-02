@@ -16,6 +16,7 @@ import 'package:event_connect/services/supabaseService/supbase_crud_service.dart
 import 'package:event_connect/views/screens/auth/forgetScreen/congrats_screen.dart';
 import 'package:event_connect/views/screens/auth/forgetScreen/otp_verification_screen.dart';
 import 'package:event_connect/views/screens/auth/forgetScreen/reset_password_screen.dart';
+import 'package:event_connect/views/screens/auth/login_screen.dart';
 import 'package:event_connect/views/screens/bottomNavBar/bottom_nav_screen.dart';
 import 'package:event_connect/views/screens/supplier/homeScreen/home_screen.dart';
 import 'package:event_connect/views/widget/custom_dialog_widget.dart';
@@ -402,7 +403,8 @@ DialogService.instance.hideProgressDialog(context: context);
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                  Get.to(() => OtpVerificationScreen());
+                  Get.offAll(()=>LoginScreen());
+                  // Get.to(() => OtpVerificationScreen());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: kPrimaryColor,
