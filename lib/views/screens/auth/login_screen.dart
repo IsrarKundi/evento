@@ -10,7 +10,7 @@ import 'package:event_connect/views/widget/my_button.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 
 import '../../widget/buttons/social_button.dart';
 
@@ -105,7 +105,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SocialButton(),
+                         SocialButton(onTap: () async{
+                            await controller.appleSignIn();
+                        },),
                         SizedBox(width: Get.width*0.05,),
                          SocialButton(buttonText: AppLocalizations.of(context)!.google,iconPath: Assets.imagesGoogle,
                         onTap: () async {

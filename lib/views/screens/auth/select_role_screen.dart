@@ -4,7 +4,8 @@ import 'package:event_connect/views/screens/supplier/membership/memborship_scree
 import 'package:event_connect/views/screens/supplier/profileSetup/main_profile_setup_screen.dart';
 import 'package:event_connect/views/widget/appBars/custom_app_bar.dart';
 import 'package:event_connect/views/widget/my_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
+
 
 import '../../../core/utils/validators.dart';
 import '../../../main_packages.dart';

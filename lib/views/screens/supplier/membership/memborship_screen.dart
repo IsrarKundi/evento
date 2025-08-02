@@ -1,8 +1,8 @@
 
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/views/screens/supplier/membership/select_advertisement_screen.dart';
 import 'package:event_connect/views/widget/appBars/custom_app_bar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../bottomNavBar/bottom_nav_screen.dart';
 

@@ -4,6 +4,7 @@ import 'package:event_connect/controllers/suppierControllers/add_service_control
 import 'package:event_connect/core/constants/app_constants.dart';
 import 'package:event_connect/core/utils/image_picker_service.dart';
 import 'package:event_connect/core/utils/validators.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/services/snackbar_service/snackbar.dart';
 import 'package:event_connect/views/widget/bottomSheets/city_selector_bottom_sheet.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
@@ -12,7 +13,7 @@ import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../core/utils/app_lists.dart';
 import '../../../../core/utils/localization_helper.dart';
 import '../../../widget/my_button.dart';

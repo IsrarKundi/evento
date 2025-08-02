@@ -1,10 +1,10 @@
 import 'package:event_connect/controllers/suppierControllers/profile_setup_controler.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_bio_screen.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_portfolio_screen.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_profile_Screen.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_service_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/bindings/bindings.dart';
 import '../../../../main_packages.dart';

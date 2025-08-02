@@ -12,7 +12,8 @@ import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/custom_textfield.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:uuid/uuid.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
+
 
 import '../../../../controllers/chatControllers/chat_controller.dart';
 import '../../../../controllers/chatControllers/message_controller.dart';

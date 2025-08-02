@@ -1,10 +1,10 @@
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/views/screens/bottomNavBar/bookingTab/booking_tab.dart';
 import 'package:event_connect/views/screens/bottomNavBar/chatsTab/chats_tab.dart';
 import 'package:event_connect/views/screens/bottomNavBar/profileTab/profile_tab.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../main_packages.dart';

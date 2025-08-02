@@ -1,7 +1,7 @@
 import 'package:event_connect/controllers/authControllers/auth_controller.dart';
 import 'package:event_connect/views/widget/appBars/custom_app_bar.dart';
 import 'package:event_connect/views/widget/my_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../../main_packages.dart';

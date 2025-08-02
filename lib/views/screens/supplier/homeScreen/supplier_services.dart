@@ -1,12 +1,12 @@
 import 'dart:developer';
 
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/models/serviceModels/services_model.dart';
 import 'package:event_connect/views/screens/categoryScreens/category_detail_screen.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_portfolio_screen.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_service_screen.dart';
 import 'package:event_connect/views/widget/my_button.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../controllers/suppierControllers/add_service_controller.dart';
 import '../../../../main_packages.dart';

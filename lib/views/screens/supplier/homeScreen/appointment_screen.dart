@@ -1,9 +1,9 @@
 import 'package:event_connect/controllers/suppierControllers/appointments_controller.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/models/bookingModel/booking_model.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../main_packages.dart';
 import '../../categoryScreens/category_detail_screen.dart';

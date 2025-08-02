@@ -1,8 +1,9 @@
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/views/screens/auth/login_screen.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_button.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../main_packages.dart';
 

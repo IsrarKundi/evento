@@ -115,37 +115,59 @@ class SupabaseAuthService extends SupabaseConstants {
      return (null,false);
    }
   }
+Future<(AuthResponse?, bool isExist)> appleSignIn() async {
+  try {
+    final response = await Supabase.instance.client.auth.signInWithOAuth(
+      OAuthProvider.apple,
+    );
 
-  Future<(AuthResponse?, bool isExist)> appleSignIn() async {
-    try {
-      final credential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-      );
-
-      final idToken = credential.identityToken;
-      if (idToken == null) {
-        throw 'No ID Token found.';
-      }
-
-      AuthResponse response = await SupabaseAuthService.instance.supabase.auth.signInWithIdToken(
-        provider: OAuthProvider.apple,
-        idToken: idToken,
-      );
-      
-      bool isExist = await SupabaseCRUDService.instance.isDocumentExist(tableName: usersTable, id: response.user!.id);
-      return (response, isExist);
-    } on AuthException catch (e) {
-      showFailureSnackbar(title: "Apple Sign In Failed", message: e.message);
-      log("AuthException during Apple sign-in: $e");
-      return (null, false);
-    } catch (e, stackTrace) {
-      log("Unexpected exception during Apple sign-in: $e", stackTrace: stackTrace);
-      return (null, false);
+    // Check auth session
+    final session = Supabase.instance.client.auth.currentSession;
+    if (session == null) {
+      throw 'Apple sign-in failed or canceled';
     }
+
+    bool isExist = await SupabaseCRUDService.instance.isDocumentExist(
+      tableName: usersTable,
+      id: Supabase.instance.client.auth.currentUser!.id,
+    );
+
+    return (AuthResponse(session: session), isExist);
+  } catch (e) {
+    log("Apple Sign-In error: $e");
+    return (null, false);
   }
+}
+  // Future<(AuthResponse?, bool isExist)> appleSignIn() async {
+  //   try {
+  //     final credential = await SignInWithApple.getAppleIDCredential(
+  //       scopes: [
+  //         AppleIDAuthorizationScopes.email,
+  //         AppleIDAuthorizationScopes.fullName,
+  //       ],
+  //     );
+
+  //     final idToken = credential.identityToken;
+  //     if (idToken == null) {
+  //       throw 'No ID Token found.';
+  //     }
+
+  //     AuthResponse response = await SupabaseAuthService.instance.supabase.auth.signInWithIdToken(
+  //       provider: OAuthProvider.apple,
+  //       idToken: idToken,
+  //     );
+      
+  //     bool isExist = await SupabaseCRUDService.instance.isDocumentExist(tableName: usersTable, id: response.user!.id);
+  //     return (response, isExist);
+  //   } on AuthException catch (e) {
+  //     showFailureSnackbar(title: "Apple Sign In Failed", message: e.message);
+  //     log("AuthException during Apple sign-in: $e");
+  //     return (null, false);
+  //   } catch (e, stackTrace) {
+  //     log("Unexpected exception during Apple sign-in: $e", stackTrace: stackTrace);
+  //     return (null, false);
+  //   }
+  // }
 
   /// Sign Out
   Future<bool> signOut() async {

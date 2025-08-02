@@ -6,6 +6,7 @@ import 'package:event_connect/core/constants/app_constants.dart';
 import 'package:event_connect/core/utils/app_lists.dart';
 import 'package:event_connect/core/utils/dialogs.dart';
 import 'package:event_connect/core/utils/localization_helper.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/models/serviceModels/services_model.dart';
@@ -16,7 +17,6 @@ import 'package:event_connect/views/screens/notifications_screen.dart';
 import 'package:event_connect/views/widget/bottomSheets/home_filter_bottom_sheet.dart';
 import 'package:event_connect/views/widget/carousel/base_carousel.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../widget/buttons/filter_button.dart';
 import '../../../widget/my_text_widget.dart';

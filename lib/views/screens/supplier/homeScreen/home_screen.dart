@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:event_connect/core/bindings/bindings.dart';
 import 'package:event_connect/core/constants/shared_preference_keys.dart';
 import 'package:event_connect/core/utils/dialogs.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/services/shared_preferences_services.dart';
 import 'package:event_connect/services/supabaseService/supbase_crud_service.dart';
@@ -17,7 +18,6 @@ import 'package:event_connect/views/widget/appBars/profile_appbar.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:event_connect/views/widget/language_selector_tile.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'advirtising_screen.dart';
 

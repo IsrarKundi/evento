@@ -4,12 +4,12 @@ import 'package:event_connect/core/constants/app_constants.dart';
 import 'package:event_connect/core/constants/supabase_constants.dart';
 import 'package:event_connect/core/utils/dialogs.dart';
 import 'package:event_connect/core/utils/utils.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/models/availabilityModel/availability_model.dart';
 import 'package:event_connect/services/snackbar_service/snackbar.dart';
 import 'package:event_connect/services/supabaseService/supbase_crud_service.dart';
 import 'package:event_connect/views/widget/my_button.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../main_packages.dart';
 
 

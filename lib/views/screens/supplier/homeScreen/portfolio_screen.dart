@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:event_connect/controllers/suppierControllers/portfolio_controller.dart';
 import 'package:event_connect/controllers/suppierControllers/profile_setup_controler.dart';
 import 'package:event_connect/core/utils/image_picker_service.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/services/supabaseService/supbase_crud_service.dart';
@@ -11,7 +12,6 @@ import 'package:event_connect/views/widget/appBars/custom_app_bar.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_button.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../controllers/suppierControllers/add_service_controller.dart';
 import '../../../../core/bindings/bindings.dart';

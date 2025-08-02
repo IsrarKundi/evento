@@ -8,6 +8,7 @@ import 'package:event_connect/core/enums/user_role.dart';
 import 'package:event_connect/core/utils/dialogs.dart';
 import 'package:event_connect/core/utils/localization_helper.dart';
 import 'package:event_connect/core/utils/utils.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/models/bookingModel/booking_model.dart';
@@ -24,7 +25,6 @@ import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_button.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:event_connect/views/widget/reviewStar/custom_review_star.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../controllers/userControllers/bookings_controller.dart';
 import '../../../core/constants/app_constants.dart';

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:event_connect/core/constants/app_constants.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/models/bookingModel/booking_model.dart';
@@ -12,7 +13,6 @@ import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:event_connect/views/widget/language_selector_tile.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../controllers/userControllers/bookings_controller.dart';
 import '../../../../core/constants/shared_preference_keys.dart';

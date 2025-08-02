@@ -4,7 +4,7 @@ import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/views/screens/auth/login_screen.dart';
 import 'package:event_connect/views/screens/auth/select_role_screen.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import '../../widget/common_image_view_widget.dart';
 import '../../widget/custom_textfield.dart';
 import '../../widget/my_button.dart';

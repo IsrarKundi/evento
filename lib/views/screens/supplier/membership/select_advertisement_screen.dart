@@ -1,5 +1,5 @@
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/views/widget/appBars/custom_app_bar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/bindings/bindings.dart';
 import '../../../../main_packages.dart';

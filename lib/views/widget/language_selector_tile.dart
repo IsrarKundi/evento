@@ -1,10 +1,10 @@
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/services/shared_preferences_services.dart';
 import 'package:event_connect/core/constants/shared_preference_keys.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanguageSelectorTile extends StatefulWidget {
   const LanguageSelectorTile({super.key});

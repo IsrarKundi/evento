@@ -10,7 +10,7 @@ import 'package:event_connect/models/chatModels/chat_thread_model.dart';
 import 'package:event_connect/services/chattingService/chatting_service.dart';
 import 'package:event_connect/views/screens/bottomNavBar/chatsTab/message_Screen.dart';
 import 'package:event_connect/views/screens/categoryScreens/category_detail_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../../main_packages.dart';

@@ -5,6 +5,7 @@ import 'package:event_connect/core/constants/supabase_constants.dart';
 import 'package:event_connect/core/enums/enums.dart';
 import 'package:event_connect/core/utils/dialogs.dart';
 import 'package:event_connect/core/utils/utils.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/models/availabilityModel/availability_model.dart';
@@ -15,7 +16,6 @@ import 'package:event_connect/services/snackbar_service/snackbar.dart';
 import 'package:event_connect/services/supabaseService/supbase_crud_service.dart';
 import 'package:event_connect/views/screens/auth/forgetScreen/congrats_screen.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../userControllers/bookings_controller.dart';
 
 class ScheduleBookingController extends GetxController {

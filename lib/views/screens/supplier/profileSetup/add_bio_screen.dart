@@ -1,8 +1,8 @@
 import 'package:event_connect/controllers/suppierControllers/profile_setup_controler.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/services/snackbar_service/snackbar.dart';
 
 import 'package:event_connect/views/widget/my_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 import '../../../../main_packages.dart';

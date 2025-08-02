@@ -1,4 +1,4 @@
-package com.example.event_connect
+package ccom.example.event-connect
 
 import io.flutter.embedding.android.FlutterActivity
 

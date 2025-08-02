@@ -1,8 +1,8 @@
 import 'package:event_connect/controllers/notificationsController/notification_controller.dart';
 import 'package:event_connect/core/utils/utils.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/models/notificationsModel/notification_model.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../main_packages.dart';
 

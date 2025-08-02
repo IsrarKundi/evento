@@ -1,5 +1,6 @@
 import 'package:event_connect/core/bindings/bindings.dart';
 import 'package:event_connect/core/constants/app_colors.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/services/onesignalNotificationService/one_signal_notification_service.dart';
 import 'package:event_connect/views/screens/launch/splash_screen.dart';
 import 'package:event_connect/views/screens/language_selection_screen.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 Future<void> main() async {

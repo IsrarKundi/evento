@@ -1,5 +1,6 @@
 import 'package:event_connect/controllers/categoryControllers/schedule_booking_controller.dart';
 import 'package:event_connect/core/utils/utils.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main_packages.dart';
 import 'package:event_connect/models/serviceModels/services_model.dart';
 import 'package:event_connect/services/snackbar_service/snackbar.dart';
@@ -8,7 +9,6 @@ import 'package:event_connect/views/widget/calendar/custom_date_picker.dart';
 import 'package:event_connect/views/widget/custom_dropdown_widget.dart';
 import 'package:event_connect/views/widget/my_button.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScheduleBooking extends StatelessWidget {
   final ServiceModel serviceModel;

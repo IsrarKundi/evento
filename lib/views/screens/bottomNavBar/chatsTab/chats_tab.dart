@@ -1,10 +1,10 @@
 import 'package:event_connect/core/bindings/bindings.dart';
 import 'package:event_connect/core/constants/app_constants.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/views/screens/bottomNavBar/chatsTab/message_Screen.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../controllers/chatControllers/chat_controller.dart';
 import '../../../../core/constants/supabase_constants.dart';
