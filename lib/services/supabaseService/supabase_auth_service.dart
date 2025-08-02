@@ -74,10 +74,10 @@ class SupabaseAuthService extends SupabaseConstants {
   Future<(AuthResponse?,bool isExist)> googleSignIn() async {
    try{
 
-     const webClientId = '156492362514-g2ddf304g6ise7gn1stam38q4i8gpi5k.apps.googleusercontent.com';
+     const webClientId = '638930873-dlo1oavnvdssj5mvpgl17t5evch6fjh2.apps.googleusercontent.com';
 
 
-     const iosClientId = '156492362514-k49ob28n1fj7bv62sf9nuqmaug3a6geg.apps.googleusercontent.com';
+     const iosClientId = '638930873-gt9jqbodoancgs8v8v4o6e231lv8uc5l.apps.googleusercontent.com';
 
      // Google sign in on Android will work without providing the Android
      // Client ID registered on Google Cloud.
