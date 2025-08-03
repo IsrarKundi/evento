@@ -92,37 +92,277 @@ class TimePickerWidget extends StatelessWidget {
 
   TimePickerWidget({super.key});
 
+  // Helper method to normalize date (remove time component)
+  DateTime _normalizeDate(DateTime date) {
+    return DateTime(date.year, date.month, date.day);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return SingleChildScrollView(
-        child: Wrap(
+      // Get slots for the currently selected date
+      List<String> availableSlotsForDate = [];
+      
+      if (controller.selectedDate.value != null && 
+          controller.availableModel.value != null) {
+        
+        final normalizedSelectedDate = _normalizeDate(controller.selectedDate.value!);
+        
+        // Check if we have per-date slots data
+        if (controller.availableModel.value!.slotsPerDate != null && 
+            controller.availableModel.value!.slotsPerDate!.isNotEmpty) {
+          
+          // Find slots for the selected date
+          String? dateKey;
+          for (String key in controller.availableModel.value!.slotsPerDate!.keys) {
+            DateTime keyDate = DateTime.parse(key);
+            if (_normalizeDate(keyDate).isAtSameMomentAs(normalizedSelectedDate)) {
+              dateKey = key;
+              break;
+            }
+          }
+          
+          if (dateKey != null) {
+            availableSlotsForDate = List<String>.from(
+              controller.availableModel.value!.slotsPerDate![dateKey] ?? []
+            );
+          }
+        } else {
+          // Fallback: if no per-date slots, check if selected date is in selectedDates
+          bool isDateAvailable = controller.availableModel.value!.selectedDates.any((date) => 
+            _normalizeDate(date).isAtSameMomentAs(normalizedSelectedDate)
+          );
+          
+          if (isDateAvailable) {
+            availableSlotsForDate = List<String>.from(controller.times);
+          }
+        }
+      }
 
-          spacing: 10,
-          runSpacing: 10,
-          children: controller.times.map((time) {
-            final isSelected = controller.selectedTime.value == time;
-            return GestureDetector(
-              onTap: () => controller.selectTime(time),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                decoration: BoxDecoration(
-                  color: isSelected ? kPrimaryColor : Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8),
+      // Show message if no date is selected
+      if (controller.selectedDate.value == null) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Icon(
+                Icons.calendar_today,
+                size: 48,
+                color: Colors.grey[400],
+              ),
+              const SizedBox(height: 16),
+              MyText(
+                text: 
+                //AppLocalizations.of(context)!.pleaseSelectDateFirst ?? 
+                'Please select a date first',
+                size: 16,
+                color: Colors.grey[600],
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        );
+      }
+
+      // Show message if no slots available for selected date
+      if (availableSlotsForDate.isEmpty) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Icon(
+                Icons.schedule_outlined,
+                size: 48,
+                color: Colors.grey[400],
+              ),
+              const SizedBox(height: 16),
+              MyText(
+                text: 
+                //AppLocalizations.of(context)!.noSlotsAvailable ?? 
+                'No time slots available for selected date',
+                size: 16,
+                color: Colors.grey[600],
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              MyText(
+                text: 
+                //AppLocalizations.of(context)!.pleaseSelectAnotherDate ?? 
+                'Please select another date',
+                size: 14,
+                color: Colors.grey[500],
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        );
+      }
+
+      // Get booked slots for the selected date
+      Set<String> bookedSlots = controller.bookedSlotsPerDate[controller.selectedDate.value] ?? {};
+      List<String> availableSlots = availableSlotsForDate.where((slot) => !bookedSlots.contains(slot)).toList();
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Show selected date info
+          Container(
+            margin: const EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: kPrimaryColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: kPrimaryColor.withOpacity(0.3)),
+            ),
+            child: Row(
+              children: [
+                Icon(Icons.calendar_today, color: kPrimaryColor, size: 20),
+                const SizedBox(width: 8),
+                MyText(
+                  text: '${'Selected Date'}: ${Utils.formatDateTimeSimple(controller.selectedDate.value!, context)}',
+                  color: kPrimaryColor,
+                  weight: FontWeight.w600,
+                  size: 14,
                 ),
-                child: Text(
-                  Utils.convertTo24Hour(time),
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold,
+                const Spacer(),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: MyText(
+                    text: '${availableSlots.length} ${'available'}',
+                    color: Colors.white,
+                    size: 12,
+                    weight: FontWeight.w500,
                   ),
                 ),
+              ],
+            ),
+          ),
+          
+          // Time slots grid
+          SingleChildScrollView(
+  child: Wrap(
+    spacing: 10,
+    runSpacing: 10,
+    children: availableSlotsForDate.map((time) {
+      final isSelected = controller.selectedTime.value == time;
+      final isBooked = controller.isSlotBooked(time); // Use controller method
+      
+      return GestureDetector(
+        onTap: isBooked ? null : () => controller.selectTime(time),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: isBooked 
+                ? Colors.red.shade100
+                : isSelected 
+                    ? kPrimaryColor 
+                    : Colors.white,
+            border: Border.all(
+              color: isBooked
+                  ? Colors.red.shade300
+                  : isSelected 
+                      ? kPrimaryColor 
+                      : Colors.grey.shade300,
+              width: isSelected ? 2 : 1,
+            ),
+            borderRadius: BorderRadius.circular(8),
+            boxShadow: isSelected && !isBooked ? [
+              BoxShadow(
+                color: kPrimaryColor.withOpacity(0.3),
+                blurRadius: 4,
+                offset: const Offset(0, 2),
               ),
-            );
-          }).toList(),
+            ] : [],
+          ),
+          child: Stack(
+            children: [
+              MyText(
+                text: Utils.convertTo24Hour(time),
+                color: isBooked
+                    ? Colors.red.shade700
+                    : isSelected 
+                        ? Colors.white 
+                        : Colors.black87,
+                weight: isSelected ? FontWeight.bold : FontWeight.w500,
+                size: 14,
+                decoration: isBooked ? TextDecoration.lineThrough : TextDecoration.none,
+                decorationColor: Colors.red.shade700,
+                decorationThickness: 2,
+              ),
+              // if (isBooked)
+              //   Positioned(
+              //     top: -2,
+              //     right: -2,
+              //     child: Icon(
+              //       Icons.block,
+              //       size: 14,
+              //       color: Colors.red.shade700,
+              //     ),
+              //   ),
+            ],
+          ),
         ),
       );
+    }).toList(),
+  ),
+),
+          // Legend
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade50,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.grey.shade200),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildLegendItem(Colors.white, 'Available', Colors.black87, Icons.schedule),
+                _buildLegendItem(kPrimaryColor, 'Selected', Colors.white, Icons.check_circle),
+                _buildLegendItem(Colors.red.shade100, 'Booked', Colors.red.shade700, Icons.block),
+              ],
+            ),
+          ),
+        ],
+      );
     });
+  }
+
+  Widget _buildLegendItem(Color backgroundColor, String label, Color textColor, IconData icon) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(4),
+            border: backgroundColor == Colors.red.shade100 
+                ? Border.all(color: Colors.red.shade300)
+                : backgroundColor == Colors.white
+                    ? Border.all(color: Colors.grey.shade300)
+                    : null,
+          ),
+          child: Icon(
+            icon,
+            size: 12,
+            color: textColor,
+          ),
+        ),
+        const SizedBox(width: 4),
+        MyText(
+          text: label,
+          size: 11,
+          weight: FontWeight.w500,
+          color: Colors.grey.shade700,
+        ),
+      ],
+    );
   }
 }

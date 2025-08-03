@@ -26,7 +26,11 @@ class AppointmentsController extends GetxController {
     var docs = await SupabaseCRUDService.instance.readAllDocumentsWithJoin(
       fieldName: 'supplier_id',
         fieldValue: SupabaseAuthService.instance.getCurrentUser()?.id??"",
-        tableName: SupabaseConstants().bookingsTable, joinQuery: '* , user_model:users(*),service_model:services!fk_bookings_service_id(*)');
+        tableName: SupabaseConstants().bookingsTable, joinQuery: '''
+  *,
+  user_model:users!fk_bookings_booked_by (*),
+  service_model:services!fk_bookings_service_id (*)
+''');
   log("Docs getAllAppointments = ${docs}");
 
   if(docs!=null){

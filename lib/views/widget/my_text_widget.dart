@@ -16,7 +16,8 @@ class MyText extends StatelessWidget {
   final Color? color;
   final FontStyle? fontStyle;
   final VoidCallback? onTap;
-
+final Color? decorationColor;
+  final double? decorationThickness;
   final int? maxLines;
   final double? size;
   final double? lineHeight;
@@ -32,6 +33,8 @@ class MyText extends StatelessWidget {
     this.size,
     this.lineHeight,
     this.maxLines = 100,
+     this.decorationColor,
+    this.decorationThickness,
     this.decoration = TextDecoration.none,
     this.color,
     this.letterSpacing,
@@ -65,6 +68,8 @@ class MyText extends StatelessWidget {
             color: color ?? kBlackColor1,
             fontWeight: weight,
             decoration: decoration,
+            decorationColor: decorationColor,
+        decorationThickness: decorationThickness,
             fontFamily: fontFamily ?? AppFonts.Poppins,
             height: lineHeight,
             fontStyle: fontStyle,

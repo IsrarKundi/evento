@@ -26,6 +26,7 @@ import 'package:event_connect/views/widget/my_button.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
 import 'package:event_connect/views/widget/reviewStar/custom_review_star.dart';
 
+
 import '../../../controllers/userControllers/bookings_controller.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../models/chatModels/chat_thread_model.dart';
@@ -36,7 +37,6 @@ import '../image_view.dart';
 import '../supplier/homeScreen/chechout_screen.dart';
 
 class CategoryDetailScreen extends StatefulWidget {
-
   final ServiceModel serviceModel;
   final bool isSupplierView, isAdvertisedButton;
   final bool isUserView;
@@ -64,7 +64,16 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   void initState() {
     super.initState();
     readPortfolio(userId: widget.serviceModel.createdBy ?? '');
+
     readUser();
+ 
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    final loc = AppLocalizations.of(context);
+    if (loc == null) {
+     print("loc is null");
+    }
+  });
+
   }
 
   readPortfolio({required String userId}) async {
@@ -101,11 +110,19 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
   @override
   Widget build(BuildContext context) {
     log("Service Model = ${widget.serviceModel.toMap()}");
+     final localizations = AppLocalizations.of(context);
+     if (localizations == null) {
+    return Scaffold(
+      body: Center(child: CircularProgressIndicator()),
+    );
+  }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: MyText(text:LocalizationHelper.getLocalizedServiceName(context, widget.serviceModel.serviceName??"")),
+        title: MyText(
+            text: LocalizationHelper.getLocalizedServiceName(
+                context, widget.serviceModel.serviceName ?? "")),
         actions: [
           if (widget.isSupplierView)
             Padding(
@@ -116,7 +133,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                     DialogService.instance.showConfirmationDialog(
                       context: context,
                       title: AppLocalizations.of(context)!.deleteService,
-                      message: AppLocalizations.of(context)!.doYouWantDeleteService,
+                      message:
+                          AppLocalizations.of(context)!.doYouWantDeleteService,
                       onYes: () async {
                         DialogService.instance
                             .showProgressDialog(context: context);
@@ -167,23 +185,23 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             )
         ],
       ),
-      bottomNavigationBar:  widget.isBooking?
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: MyButton(
-            mBottom: 30,
-            radius: 100,
-            onTap: () {
-              Get.to(
-                      () => ScheduleBooking(
-                      serviceModel: widget.serviceModel),
-                  binding: ScheduleBookingBinding(),
-                  arguments: widget.serviceModel);
-            },
-            buttonText: AppLocalizations.of(context)!.bookNow),
-      ):
-      widget.isAdvertisedButton
-              ? (widget.serviceModel.advertised == true )
+      bottomNavigationBar: widget.isBooking
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MyButton(
+                  mBottom: 30,
+                  radius: 100,
+                  onTap: () {
+                    Get.to(
+                        () =>
+                            ScheduleBooking(serviceModel: widget.serviceModel),
+                        binding: ScheduleBookingBinding(),
+                        arguments: widget.serviceModel);
+                  },
+                  buttonText: AppLocalizations.of(context)!.bookNow),
+            )
+          : widget.isAdvertisedButton
+              ? (widget.serviceModel.advertised == true)
                   ? SizedBox()
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -195,10 +213,11 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                                   serviceModel: widget.serviceModel,
                                 ));
                           },
-                          buttonText: AppLocalizations.of(context)!.advertisedNow),
+                          buttonText:
+                              localizations?.advertisedNow ??
+                                  "Advertised Now"),
                     )
-
-          : SizedBox(),
+              : SizedBox(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -214,14 +233,15 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                   url: widget.serviceModel.serviceImage ?? dummyProfileUrl,
                   showBook: false,
                   title: widget.serviceModel.serviceName ?? "",
-                  location: widget.serviceModel.location ?? "",context: context),
+                  location: widget.serviceModel.location ?? "",
+                  context: context),
               const SizedBox(
                 height: 30,
               ),
               Row(
                 children: [
                   MyText(
-                    text: AppLocalizations.of(context)!.about,
+                    text: localizations?.about ?? "About",
                     color: kPrimaryColor,
                     weight: FontWeight.w600,
                     size: 16,
@@ -237,7 +257,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                 height: 20,
               ),
               MyText(
-                text: AppLocalizations.of(context)!.service,
+                text: AppLocalizations.of(context)?.service ?? "Service",
                 color: kPrimaryColor,
                 weight: FontWeight.w600,
                 size: 16,
@@ -254,12 +274,14 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                   color: Colors.white,
                 ),
                 child: Center(
-                    child: MyText(text:LocalizationHelper.getLocalizedServiceName(context, widget.serviceModel.serviceName??"") )),
+                    child: MyText(
+                        text: LocalizationHelper.getLocalizedServiceName(
+                            context, widget.serviceModel.serviceName ?? ""))),
               ),
               const SizedBox(
                 height: 20,
               ),
-              if (widget.isUserView == false && widget.isSupplierView==false)
+              if (widget.isUserView == false && widget.isSupplierView == false)
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -269,50 +291,39 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                       weight: FontWeight.w600,
                       size: 16,
                     ),
-                    Container(
-                      height: 120,
-                      
-                      decoration: BoxDecoration(
-                       boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 8,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                                                color: Colors.white,
-                    
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Obx(
-                        () => ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: images.length,
-                          itemBuilder: (context, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Get.to(
-                                    () => ImageView(imageUrl: images[index]));
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(5),
-                                clipBehavior: Clip.antiAlias,
-                                height: 100,
-                                width: 100,
-                                // margin: EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(0),
-                                ),
-                                child: CommonImageView(
+                    Card(
+                      elevation: 10,
+                      child: Container(
+                        height: 120,
+                        color: Colors.white,
+                        child: Obx(
+                          () => ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: images.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.to(
+                                      () => ImageView(imageUrl: images[index]));
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  clipBehavior: Clip.antiAlias,
                                   height: 100,
                                   width: 100,
-                                  fit: BoxFit.cover,
-                                  radius: 14,
-                                  url: images[index],
+                                  // margin: EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: CommonImageView(
+                                    height: 100,
+                                    width: 100,
+                                    url: images[index],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),
@@ -323,7 +334,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MyText(
-                      text: AppLocalizations.of(context)!.bookingDetails,
+                      text: AppLocalizations.of(context)?.bookingDetails ??
+                          "Booking Details",
                       weight: FontWeight.w700,
                       size: 18,
                       color: kPrimaryColor,
@@ -343,7 +355,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 18),
                             leading: MyText(
-                              text: AppLocalizations.of(context)!.date,
+                              text:
+                                  AppLocalizations.of(context)?.date ?? "Date",
                               weight: FontWeight.w600,
                               size: 16,
                             ),
@@ -358,12 +371,14 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 18),
                             leading: MyText(
-                              text: AppLocalizations.of(context)!.time,
+                              text:
+                                  AppLocalizations.of(context)?.time ?? "Time",
                               weight: FontWeight.w600,
                               size: 16,
                             ),
                             trailing: MyText(
-                              text: Utils.convertTo24Hour(widget.bookingModel!.selectedTime) ,
+                              text: Utils.convertTo24Hour(
+                                  widget.bookingModel!.selectedTime),
                               weight: FontWeight.w600,
                             ),
                           ),
@@ -372,8 +387,11 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 18),
                             leading: MyText(
-                              text:
-                                  widget.isUserView ? AppLocalizations.of(context)!.supplier : AppLocalizations.of(context)!.bookedBy,
+                              text: widget.isUserView
+                                  ? AppLocalizations.of(context)?.supplier ??
+                                      "Supplier"
+                                  : AppLocalizations.of(context)?.bookedBy ??
+                                      "Booked By",
                               weight: FontWeight.w600,
                               size: 16,
                             ),
@@ -389,13 +407,15 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 18),
                             leading: MyText(
-                              text: AppLocalizations.of(context)!.contactNo,
+                              text: AppLocalizations.of(context)?.contactNo ??
+                                  "Contact No",
                               weight: FontWeight.w600,
                               size: 16,
                             ),
                             trailing: Obx(
                               () => MyText(
-                                text: "${userModel.value.completePhoneNo}",
+                                text:
+                                    "${userModel.value.completePhoneNo ?? "..."}",
                                 weight: FontWeight.w600,
                               ),
                             ),
@@ -405,7 +425,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                     )
                   ],
                 ),
-              
+
               SizedBox(
                 height: 20,
               ),
@@ -490,7 +510,8 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                       DialogService.instance.showConfirmationDialog(
                         context: context,
                         title: AppLocalizations.of(context)!.cancelBooking,
-                        message: AppLocalizations.of(context)!.doYouWantCancelBooking,
+                        message: AppLocalizations.of(context)!
+                            .doYouWantCancelBooking,
                         onYes: () async {
                           DialogService.instance
                               .showProgressDialog(context: context);
@@ -512,31 +533,32 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                                   (element) =>
                                       element.id == widget.bookingModel!.id,
                                 );
-                            Get.find<BookingsController>()
-                                .otherBookings
-                                .add(widget.bookingModel!.copyWith(bookingStatus: BookingStatus.cancel.name));
+                            Get.find<BookingsController>().otherBookings.add(
+                                widget.bookingModel!.copyWith(
+                                    bookingStatus: BookingStatus.cancel.name));
                             OneSignalNotificationService.instance
                                 .sendOneSignalNotificationToUser(
                                     isSaved: true,
-                                    externalId: widget.bookingModel?.supplierId??"",
-
-                                title: AppLocalizations.of(context)!.cancelBooking,
+                                    externalId:
+                                        widget.bookingModel?.supplierId ?? "",
+                                    title: AppLocalizations.of(context)!
+                                        .cancelBooking,
                                     message:
                                         "${userModelGlobal.value?.fullName} ${AppLocalizations.of(context)!.bookingCancelledNotification}");
-                          }else{
-
-                          }
+                          } else {}
 
                           Get.close(1);
 
                           await Future.delayed(Duration(milliseconds: 100));
                           CustomSnackBars.instance.showSuccessSnackbar(
                               title: AppLocalizations.of(context)!.success,
-                              message: AppLocalizations.of(context)!.bookingCancelled);
+                              message: AppLocalizations.of(context)!
+                                  .bookingCancelled);
                         },
                       );
                     },
-                    buttonText: AppLocalizations.of(context)!.cancelBooking)
+                    buttonText: AppLocalizations.of(context)?.cancelBooking ??
+                        "Cancel Booking"),
               // if (isSupplierView == false)
               //   Column(
               //     crossAxisAlignment: CrossAxisAlignment.start,

@@ -13,14 +13,15 @@
 ///
 extension EmailValidator on String {
   bool isValidEmail() {
-    // Strict regex for email validation with valid TLDs
+    // General email validation regex allowing any valid TLD
     final RegExp regex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|edu|gov|mil|info|io|co|biz|me|app|dev|in|us|uk|ca)$',
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
       caseSensitive: false,
     );
     return regex.hasMatch(this);
   }
 }
+
 
 
 //extension to check if the user name is valid

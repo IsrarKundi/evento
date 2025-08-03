@@ -41,7 +41,7 @@ class ForgetScreen extends StatelessWidget {
               
               // Title
               Text(
-                "${AppLocalizations.of(context)!.dontHaveAccount}",
+                "Forgot Password?",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

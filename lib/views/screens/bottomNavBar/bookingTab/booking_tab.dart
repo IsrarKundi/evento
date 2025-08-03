@@ -4,13 +4,13 @@ import 'package:event_connect/controllers/userControllers/bookings_controller.da
 import 'package:event_connect/core/bindings/bindings.dart';
 
 import 'package:event_connect/core/constants/app_constants.dart';
+import 'package:event_connect/l10n/app_localizations.dart';
 import 'package:event_connect/main.dart';
 import 'package:event_connect/models/bookingModel/booking_model.dart';
 import 'package:event_connect/models/chatModels/chat_thread_model.dart';
 import 'package:event_connect/services/chattingService/chatting_service.dart';
 import 'package:event_connect/views/screens/bottomNavBar/chatsTab/message_Screen.dart';
 import 'package:event_connect/views/screens/categoryScreens/category_detail_screen.dart';
-import 'package:event_connect/l10n/app_localizations.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../../main_packages.dart';
@@ -32,7 +32,7 @@ class _BookingTabState extends State<BookingTab> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(AppLocalizations.of(context)!.booking),
+        title: Text(AppLocalizations.of(context)?.booking??"Booking"),
         centerTitle: true,
         elevation: 0,
       ),
@@ -146,62 +146,58 @@ class _BookingTabState extends State<BookingTab> {
   }
 
   Widget _buildPastBookings() {
-    return Column(
-      children: [
-        Expanded(
-            child: ListView.separated(
-          itemCount: controller.otherBookings.length,
-          itemBuilder: (context, index) {
-            BookingModel bookingModel = controller.otherBookings[index];
-        
-            return GestureDetector(
-              onTap: () => Get.to(() => CategoryDetailScreen(
-                    serviceModel: bookingModel.serviceModel!,
-                    isUserView: true,
-                  )),
-              child: buildBookingCard(
-                  isPerhour: bookingModel.serviceModel?.perHour??false,
-                  title: bookingModel.serviceModel?.serviceName ?? "",
-                  context: context,
-                  showBook: false,
-                  price: bookingModel.serviceModel?.amount ?? "0",
-                  location: '',
-                  url: bookingModel.serviceModel?.serviceImage ?? dummyProfileUrl),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return SizedBox(
-              height: 10,
-            );
-          },
-        
-          // ListView(
-          //
-          //   children: [
-          //     _buildDateHeader("Yesterday, March 25 2022"),
-          //     buildBookingCard(
-          //       imagePath: Assets.imagesEvent1,
-          //       title: "Corporate Event Managers",
-          //       location: "Manchester Central Complex",
-          //     ),
-          //     const SizedBox(height: 16),
-          //     _buildDateHeader("Monday, March 24 2022"),
-          //     buildBookingCard(
-          //       imagePath: Assets.imagesEvent1,
-          //       title: "Catering",
-          //       location: "Manchester Central Complex",
-          //     ),
-          //     const SizedBox(height: 12),
-          //     buildBookingCard(
-          //       imagePath: Assets.imagesEvent1,
-          //       title: "Corporate Event Managers",
-          //       location: "Manchester Central Complex",
-          //     ),
-          //   ],
-          // ),
-        )),
-      ],
-    );
+    return Expanded(
+        child: ListView.separated(
+      itemCount: controller.otherBookings.length,
+      itemBuilder: (context, index) {
+        BookingModel bookingModel = controller.otherBookings[index];
+
+        return GestureDetector(
+          onTap: () => Get.to(() => CategoryDetailScreen(
+                serviceModel: bookingModel.serviceModel!,
+                isUserView: true,
+              )),
+          child: buildBookingCard(
+              isPerhour: bookingModel.serviceModel?.perHour??false,
+              title: bookingModel.serviceModel?.serviceName ?? "",
+              context: context,
+              showBook: false,
+              price: bookingModel.serviceModel?.amount ?? "0",
+              location: '',
+              url: bookingModel.serviceModel?.serviceImage ?? dummyProfileUrl),
+        );
+      },
+      separatorBuilder: (context, index) {
+        return SizedBox(
+          height: 10,
+        );
+      },
+
+      // ListView(
+      //
+      //   children: [
+      //     _buildDateHeader("Yesterday, March 25 2022"),
+      //     buildBookingCard(
+      //       imagePath: Assets.imagesEvent1,
+      //       title: "Corporate Event Managers",
+      //       location: "Manchester Central Complex",
+      //     ),
+      //     const SizedBox(height: 16),
+      //     _buildDateHeader("Monday, March 24 2022"),
+      //     buildBookingCard(
+      //       imagePath: Assets.imagesEvent1,
+      //       title: "Catering",
+      //       location: "Manchester Central Complex",
+      //     ),
+      //     const SizedBox(height: 12),
+      //     buildBookingCard(
+      //       imagePath: Assets.imagesEvent1,
+      //       title: "Corporate Event Managers",
+      //       location: "Manchester Central Complex",
+      //     ),
+      //   ],
+      // ),
+    ));
   }
 }
 
@@ -245,7 +241,7 @@ class _BookingToggleState extends State<BookingToggle> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  AppLocalizations.of(context)!.upcoming,
+                  AppLocalizations.of(context)?.upcoming??"Upcoming",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
               ),
@@ -269,7 +265,7 @@ class _BookingToggleState extends State<BookingToggle> {
                 ),
                 alignment: Alignment.center,
                 child: Text(
-                  AppLocalizations.of(context)!.past,
+                  AppLocalizations.of(context)?.past??"past",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
               ),

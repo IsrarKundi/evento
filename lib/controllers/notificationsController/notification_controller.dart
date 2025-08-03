@@ -20,7 +20,10 @@ class NotificationController extends GetxController {
       fieldName: 'sent_to',
         fieldValue: userModelGlobal.value?.id??'',
         tableName: SupabaseConstants().notificationsTable,
-        joinQuery: '*,user_model:users!sent_by(*)',);
+        joinQuery: '''
+  *,
+  user_model:users!fk_notifications_sent_by (*)
+''',);
 
     log("Notifications = ${docs?.length}");
 

@@ -32,7 +32,12 @@ class BookingsController extends GetxController {
         fieldName: 'booked_by',
         fieldValue: SupabaseAuthService.instance.getCurrentUser()?.id ?? "",
         tableName: SupabaseConstants().bookingsTable,
-        joinQuery: '* , service_model:services!fk_bookings_service_id(*)');
+        joinQuery: '''
+  *,
+  service_model:services!fk_bookings_service_id (*),
+  user_model:users!fk_bookings_booked_by (*),
+  supplier_model:users!fk_bookings_supplier_id (*)
+''');
     log("Docs getAllBookings = ${docs}");
 
     if(docs!=null){

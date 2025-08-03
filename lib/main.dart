@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: globalNavKey,
         debugShowCheckedModeBanner: false,
         initialBinding: InitialBindings(),
-        localizationsDelegates: const [
+        localizationsDelegates:  [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
