@@ -17,6 +17,7 @@ import '../../../main.dart';
 import '../../../main_packages.dart';
 import '../../widget/buttons/filter_button.dart';
 import '../../widget/common_image_view_widget.dart';
+import '../../widget/gallery/category_gallery_widget.dart';
 
 class CategoryScreen extends StatelessWidget {
   final String title;
@@ -41,7 +42,10 @@ class CategoryScreen extends StatelessWidget {
               : Column(
                   children: [
                     // buildSearchFilters(context: context),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
+                    // Category Gallery
+                  
+                 //   SizedBox(height: 20),
                     Expanded( // Wrap the content in Expanded
                       child: Obx(
                         () => controller.serviceModels.isNotEmpty
@@ -130,10 +134,19 @@ class CategoryScreen extends StatelessWidget {
                                             },
                                           ),
                                         ),
-                                        SizedBox(height: 16), // Add spacing after carousel
+                                     //   SizedBox(height: 16), // Add spacing after carousel
                                       ],
                                     ),
-                                  
+                                    //SizedBox(height: 5),
+                                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: CategoryGalleryWidget(
+                        categoryName: title,
+                        height: 120,
+                        showTitle: true,
+                      ),
+                    ),
+                    SizedBox(height: 10),
                                   // ListView section (takes remaining space)
                                   Expanded( // This makes ListView take remaining space
                                     child: ListView.builder(

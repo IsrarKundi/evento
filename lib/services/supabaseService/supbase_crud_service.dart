@@ -6,6 +6,7 @@ import 'package:event_connect/services/supabaseService/supabase_auth_service.dar
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../core/constants/supabase_constants.dart';
 import '../../models/userModel/user_model.dart';
 import '../snackbar_service/snackbar.dart';
 
@@ -306,6 +307,90 @@ class SupabaseCRUDService extends SupabaseAuthService {
           .eq('id', id)
           .maybeSingle();
       return response != null;
+    } catch (e, stackTrace) {
+      log("Unexpected exception: $e", stackTrace: stackTrace);
+      return false;
+    }
+  }
+
+  /// Create Report
+  Future<bool> createReport({
+    required String reportedBy,
+    required String reportedService,
+    required String reportNote,
+  }) async {
+    try {
+      final response = await supabase.from(SupabaseConstants().reportsTable).insert({
+        'reported_by': reportedBy,
+        'reported_service': reportedService,
+        'report_note': reportNote,
+        'created_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toIso8601String(),
+      });
+      log("Report created successfully: $response");
+      return true;
+    } on PostgrestException catch (e) {
+      final errorMessage = getSupabaseErrorMessage(e);
+      CustomSnackBars.instance
+          .showFailureSnackbar(title: "Error", message: errorMessage);
+      log("PostgrestException: $e");
+      return false;
+    } catch (e, stackTrace) {
+      log("Unexpected exception: $e", stackTrace: stackTrace);
+      return false;
+    }
+  }
+
+  /// Get Category Gallery
+  Future<List<Map<String, dynamic>>?> getCategoryGallery({
+    required String categoryName,
+  }) async {
+    try {
+      final response = await supabase
+          .from(SupabaseConstants().categoryGalleryTable)
+          .select()
+          .eq('category_name', categoryName)
+          .order('created_at', ascending: false);
+      
+      if (response is List) {
+        return List<Map<String, dynamic>>.from(response);
+      }
+      log("Unexpected response format: $response");
+      return null;
+    } on PostgrestException catch (e) {
+      final errorMessage = getSupabaseErrorMessage(e);
+      log("PostgrestException in getCategoryGallery: $e");
+      return null;
+    } catch (e, stackTrace) {
+      log("Unexpected exception in getCategoryGallery: $e", stackTrace: stackTrace);
+      return null;
+    }
+  }
+
+  /// Add Category Gallery Item
+  Future<bool> addCategoryGalleryItem({
+    required String categoryName,
+    required String mediaUrl,
+    required String mediaType,
+    String? description,
+  }) async {
+    try {
+      final response = await supabase.from(SupabaseConstants().categoryGalleryTable).insert({
+        'category_name': categoryName,
+        'media_url': mediaUrl,
+        'media_type': mediaType,
+        'description': description,
+        'created_at': DateTime.now().toIso8601String(),
+        'updated_at': DateTime.now().toIso8601String(),
+      });
+      log("Category gallery item added successfully: $response");
+      return true;
+    } on PostgrestException catch (e) {
+      final errorMessage = getSupabaseErrorMessage(e);
+      CustomSnackBars.instance
+          .showFailureSnackbar(title: "Error", message: errorMessage);
+      log("PostgrestException: $e");
+      return false;
     } catch (e, stackTrace) {
       log("Unexpected exception: $e", stackTrace: stackTrace);
       return false;

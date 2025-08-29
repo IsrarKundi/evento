@@ -17,6 +17,8 @@ class SupabaseConstants {
   final bookingsTable = 'bookings';
   final chatThreadsTable = 'chat_threads';
   final communityThreadsTable = 'community_chat_threads';
+  final reportsTable = 'reports';
+  final categoryGalleryTable = 'category_gallery';
 
   final messagesTable = 'messages';
   final communityMessagesTable = 'community_messages';

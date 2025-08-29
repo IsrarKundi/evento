@@ -15,8 +15,8 @@ class Utils{
   static Future<void> openWhatsApp(String phoneNumber) async {
     final String url = 'https://wa.me/$phoneNumber';
 
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch WhatsApp';
     }

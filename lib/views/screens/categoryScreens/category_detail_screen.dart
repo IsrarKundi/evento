@@ -35,6 +35,7 @@ import '../../../services/chattingService/chatting_service.dart';
 import '../bottomNavBar/chatsTab/message_Screen.dart';
 import '../image_view.dart';
 import '../supplier/homeScreen/chechout_screen.dart';
+import '../../widget/report_dialog.dart';
 
 class CategoryDetailScreen extends StatefulWidget {
   final ServiceModel serviceModel;
@@ -124,6 +125,48 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             text: LocalizationHelper.getLocalizedServiceName(
                 context, widget.serviceModel.serviceName ?? "")),
         actions: [
+          if (!widget.isSupplierView)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TextButton(
+                onPressed: () {
+                  if (widget.serviceModel.id != null) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => ReportDialog(
+                        serviceId: widget.serviceModel.id!,
+                      ),
+                    );
+                  }
+                },
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  backgroundColor: Colors.red.withOpacity(0.1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.report_problem,
+                      color: Colors.red,
+                      size: 16,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      "Report",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           if (widget.isSupplierView)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),

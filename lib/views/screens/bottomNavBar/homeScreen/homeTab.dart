@@ -20,6 +20,7 @@ import 'package:event_connect/views/widget/common_image_view_widget.dart';
 
 import '../../../widget/buttons/filter_button.dart';
 import '../../../widget/my_text_widget.dart';
+import '../../../widget/gallery/category_gallery_widget.dart';
 import '../../categoryScreens/category_detail_screen.dart';
 
 class HomeTab extends StatelessWidget {
@@ -52,8 +53,21 @@ class HomeTab extends StatelessWidget {
                   final value = controller.advertisedServices[key];
 
                   log("service =${key}");
-                  return _buildSection(
-                      key, Obx(() => _buildPromoCard(serviceType: key, context: context)), context: context);
+                  return Column(
+                    children: [
+                      _buildSection(
+                          key, Obx(() => _buildPromoCard(serviceType: key, context: context)), context: context),
+                      SizedBox(height: 16),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: CategoryGalleryWidget(
+                          categoryName: key,
+                          height: 100,
+                          showTitle: true,
+                        ),
+                      ),
+                    ],
+                  );
                 },
                 separatorBuilder: (context, index) => SizedBox(height: 20),
               ),

@@ -8,6 +8,7 @@ import 'package:event_connect/models/bookingModel/booking_model.dart';
 import 'package:event_connect/views/screens/bottomNavBar/profileTab/privacy_policy_screen.dart';
 import 'package:event_connect/views/screens/bottomNavBar/profileTab/terms_and_condition_Screen.dart';
 import 'package:event_connect/views/screens/supplier/profileSetup/add_profile_Screen.dart';
+import 'package:event_connect/views/screens/admin/category_gallery_upload_screen.dart';
 import 'package:event_connect/views/widget/bookingCards/booking_card.dart';
 import 'package:event_connect/views/widget/common_image_view_widget.dart';
 import 'package:event_connect/views/widget/my_text_widget.dart';
@@ -110,6 +111,15 @@ class ProfileTab extends StatelessWidget {
                       title: MyText(text: AppLocalizations.of(context)!.termsAndConditions),
                       contentPadding: EdgeInsets.zero,
                     ),
+                    // TEST UPLOAD BUTTON - REMOVE AFTER TESTING
+                    // ListTile(
+                    //   onTap: () {
+                    //     Get.to(() => CategoryGalleryUploadScreen());
+                    //   },
+                    //   leading: Icon(Icons.upload, color: Colors.orange),
+                    //   title: MyText(text: "Test Gallery Upload", color: Colors.orange),
+                    //   contentPadding: EdgeInsets.zero,
+                    // ),
                     ListTile(
                       onTap: () {
                         log("Logout called");

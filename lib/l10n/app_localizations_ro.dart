@@ -9,32 +9,32 @@ class AppLocalizationsRo extends AppLocalizations {
   AppLocalizationsRo([String locale = 'ro']) : super(locale);
 
   @override
-  String get fieldRequired => 'Câmpul este obligatoriu';
+  String get fieldRequired => 'Câmp obligatoriu';
 
   @override
-  String get pleaseSelectDate => 'Vă rugăm să selectați data';
+  String get pleaseSelectDate => 'Te rugăm să selectezi o dată';
 
   @override
-  String get pleaseEnterEmail => 'Vă rugăm să introduceți adresa de email';
+  String get pleaseEnterEmail => 'Te rugăm să introduci adresa ta de email';
 
   @override
-  String get invalidEmail => 'Adresă de email nevalidă';
+  String get invalidEmail => 'Adresă de email invalidă';
 
   @override
-  String get pleaseEnterPuffs => 'Vă rugăm să introduceți numărul de inhalări';
+  String get pleaseEnterPuffs => 'Te rugăm să introduci numărul de pufuri';
 
   @override
-  String get maximumRequired => 'Maxim 55 necesar';
+  String get maximumRequired => 'Maxim 55 permise';
 
   @override
   String get pleaseEnterUsername =>
-      'Vă rugăm să introduceți numele de utilizator';
+      'Te rugăm să introduci numele de utilizator';
 
   @override
-  String get invalidUsername => 'Nume de utilizator nevalid';
+  String get invalidUsername => 'Nume de utilizator invalid';
 
   @override
-  String get passwordRequired => 'Parola este necesară';
+  String get passwordRequired => 'Parola este obligatorie';
 
   @override
   String get passwordMinLength =>
@@ -56,15 +56,13 @@ class AppLocalizationsRo extends AppLocalizations {
       'Parola trebuie să conțină cel puțin un caracter special';
 
   @override
-  String get pleaseEnterPasswordAgain =>
-      'Vă rugăm să introduceți din nou parola';
+  String get pleaseEnterPasswordAgain => 'Te rugăm să reintroduci parola';
 
   @override
   String get passwordsDoNotMatch => 'Parolele nu se potrivesc';
 
   @override
-  String get areYouSureQuitApp =>
-      'Sunteți sigur că doriți să ieșiți din aplicație?';
+  String get areYouSureQuitApp => 'Ești sigur că vrei să închizi aplicația?';
 
   @override
   String get no => 'Nu';
@@ -85,43 +83,44 @@ class AppLocalizationsRo extends AppLocalizations {
   String get serviceArtists => 'Artiști';
 
   @override
-  String get serviceEventSpaces => 'Spații evenimente';
+  String get serviceEventSpaces => 'Spații pentru evenimente';
 
   @override
   String get serviceCateringCompanies => 'Companii de catering';
 
   @override
-  String get serviceInteriorDecorators => 'Firme de decorațiuni interior';
+  String get serviceInteriorDecorators => 'Companii de decorațiuni interioare';
 
   @override
-  String get serviceCarRental => 'Societăți închirieri mașini';
+  String get serviceCarRental => 'Companii de închirieri auto';
 
   @override
   String get servicePhotographers => 'Fotografi';
 
   @override
-  String get serviceMakeup => 'Make up';
+  String get serviceMakeup => 'Machiaj';
 
   @override
-  String get serviceHairdressing => 'Frizerie/ coafor';
+  String get serviceHairdressing => 'Coafură/Frizerie';
 
   @override
-  String get servicePodiumLighting => 'Societăți de Amenajare Podium/lumini';
+  String get servicePodiumLighting => 'Companii decor podium/iluminat';
 
   @override
-  String get serviceTentRental => 'Companii închirieri corturi';
+  String get serviceTentRental => 'Companii închiriere corturi';
 
   @override
-  String get serviceWeddingGifts => 'Cadouri de nuntă, daruri, mărturii';
+  String get serviceWeddingGifts => 'Cadouri, suveniruri de nuntă';
 
   @override
-  String get serviceTailoringFashion => 'Ateliere de croitorie, fashion, etc';
+  String get serviceTailoringFashion => 'Croitorie, modă etc.';
 
   @override
-  String get serviceAlcoholSuppliers => 'Furnizori alcool, trabucuri, baruri';
+  String get serviceAlcoholSuppliers =>
+      'Furnizori de alcool, trabucuri, baruri';
 
   @override
-  String get serviceFlowersBouquets => 'Flori, Buchete';
+  String get serviceFlowersBouquets => 'Flori, buchete';
 
   @override
   String get serviceOthers => 'Altele';
@@ -130,22 +129,22 @@ class AppLocalizationsRo extends AppLocalizations {
   String get email => 'Email';
 
   @override
-  String get enterEmail => 'Introduceți Email-ul';
+  String get enterEmail => 'Introdu emailul';
 
   @override
   String get password => 'Parolă';
 
   @override
-  String get enterPassword => 'Introduceți Parola';
+  String get enterPassword => 'Introdu parola';
 
   @override
-  String get fullName => 'Nume Complet';
+  String get fullName => 'Nume complet';
 
   @override
-  String get enterName => 'Introduceți Numele';
+  String get enterName => 'Introdu numele';
 
   @override
-  String get confirmPassword => 'Confirmați Parola';
+  String get confirmPassword => 'Confirmă parola';
 
   @override
   String get oldPassword => 'Parola veche';
@@ -154,10 +153,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get newPassword => 'Parola nouă';
 
   @override
-  String get againPassword => 'Din nou parola';
+  String get againPassword => 'Reintrodu parola';
 
   @override
-  String get signin => 'Conectare';
+  String get signin => 'Autentificare';
 
   @override
   String get signup => 'Înregistrare';
@@ -166,19 +165,19 @@ class AppLocalizationsRo extends AppLocalizations {
   String get continueButton => 'Continuă';
 
   @override
-  String get forget => 'Uită';
+  String get forget => 'Ai uitat?';
 
   @override
-  String get bookNow => 'Rezervă Acum';
+  String get bookNow => 'Rezervă acum';
 
   @override
-  String get addNewService => 'Adaugă Serviciu Nou';
+  String get addNewService => 'Adaugă serviciu nou';
 
   @override
   String get scheduleBooking => 'Programează rezervarea';
 
   @override
-  String get post => 'Postează';
+  String get post => 'Publică';
 
   @override
   String get goToHomepage => 'Mergi la pagina principală';
@@ -187,10 +186,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get logout => 'Deconectare';
 
   @override
-  String get selectWhatAreYou => 'Selectează ce ești';
+  String get selectWhatAreYou => 'Selectează cine ești';
 
   @override
-  String get forgetPassword => 'Uită parola';
+  String get forgetPassword => 'Ai uitat parola';
 
   @override
   String get privacyPolicy => 'Politica de confidențialitate';
@@ -205,19 +204,19 @@ class AppLocalizationsRo extends AppLocalizations {
   String get services => 'Servicii';
 
   @override
-  String get chats => 'Conversații';
+  String get chats => 'Mesaje';
 
   @override
   String get profile => 'Profil';
 
   @override
-  String get orContinueWith => 'sau Continuă cu';
+  String get orContinueWith => 'sau continuă cu';
 
   @override
   String get dontHaveAccount => 'Nu ai un cont?';
 
   @override
-  String get registerNow => 'Înregistrează-te Acum';
+  String get registerNow => 'Înregistrează-te acum';
 
   @override
   String get alreadyHaveAccount => 'Ai deja un cont?';
@@ -232,7 +231,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get supplier => 'Furnizor';
 
   @override
-  String get forgetPasswordQuestion => 'Uită Parola?';
+  String get forgetPasswordQuestion => 'Ai uitat parola?';
 
   @override
   String get google => 'Google';
@@ -241,7 +240,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get congrats => 'Felicitări!';
 
   @override
-  String get yourBookingDone => 'Rezervarea ta a fost finalizată';
+  String get yourBookingDone => 'Rezervarea ta a fost realizată';
 
   @override
   String get home => 'Acasă';
@@ -250,10 +249,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get bookings => 'Rezervări';
 
   @override
-  String get chat => 'Chat';
+  String get chat => 'Mesaje';
 
   @override
-  String get upcoming => 'Viitoare';
+  String get upcoming => 'Urmează';
 
   @override
   String get past => 'Trecute';
@@ -277,13 +276,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get unblock => 'Deblochează';
 
   @override
-  String get cancelBooking => 'Anulează Rezervarea';
+  String get cancelBooking => 'Anulează rezervarea';
 
   @override
-  String get deleteService => 'Șterge Serviciul';
+  String get deleteService => 'Șterge serviciul';
 
   @override
-  String get doYouWantDeleteService => 'Vrei să ștergi serviciul?';
+  String get doYouWantDeleteService => 'Vrei să ștergi acest serviciu?';
 
   @override
   String get doYouWantCancelBooking => 'Vrei să anulezi rezervarea?';
@@ -292,7 +291,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get events => 'Evenimente';
 
   @override
-  String get viewAll => 'Vezi toate';
+  String get viewAll => 'Vezi tot';
 
   @override
   String get selectCategory => 'Selectează categoria';
@@ -310,11 +309,11 @@ class AppLocalizationsRo extends AppLocalizations {
   String get event => 'Eveniment';
 
   @override
-  String get boostEarningPotential => 'Crește potențialul de câștig';
+  String get boostEarningPotential => 'Crește-ți potențialul de câștig';
 
   @override
   String get increaseEarningDescription =>
-      'Crește-ți potențialul de câștig și arată clienților\nde ce au nevoie de tine în echipa lor';
+      'Crește-ți veniturile și arată clienților\nde ce au nevoie de tine în echipă';
 
   @override
   String get addBio => 'Adaugă biografie';
@@ -323,7 +322,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get pleaseDescribeYourself => 'Te rugăm să te descrii';
 
   @override
-  String get pleaseAddBio => 'Te rugăm să adaugi biografia';
+  String get pleaseAddBio => 'Te rugăm să adaugi o biografie';
 
   @override
   String get failed => 'Eșuat';
@@ -344,34 +343,34 @@ class AppLocalizationsRo extends AppLocalizations {
   String get introduction => 'Introducere';
 
   @override
-  String get informationWeCollect => 'Informațiile pe care le colectăm';
+  String get informationWeCollect => 'Informații colectate';
 
   @override
-  String get advertisedNow => 'Promovat Acum';
+  String get advertisedNow => 'Promovat acum';
 
   @override
   String get history => 'Istoric';
 
   @override
-  String get phoneNumber => 'Număr de Telefon';
+  String get phoneNumber => 'Număr de telefon';
 
   @override
-  String get enterPhoneNumber => 'Introduceți Numărul de Telefon';
+  String get enterPhoneNumber => 'Introdu numărul de telefon';
 
   @override
   String get address => 'Adresă';
 
   @override
-  String get enterAddress => 'Introduceți Adresa';
+  String get enterAddress => 'Introdu adresa';
 
   @override
   String get language => 'Limbă';
 
   @override
-  String get selectLanguage => 'Selectează Limba';
+  String get selectLanguage => 'Selectează limba';
 
   @override
-  String get enterLanguage => 'Introduceți Limba';
+  String get enterLanguage => 'Introdu limba';
 
   @override
   String get save => 'Salvează';
@@ -380,10 +379,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get amount => 'Sumă';
 
   @override
-  String get perHour => 'Pe Oră';
+  String get perHour => 'Pe oră';
 
   @override
-  String get selectCity => 'Selectează Orașul';
+  String get selectCity => 'Selectează orașul';
 
   @override
   String get location => 'Locație';
@@ -404,10 +403,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get portfolio => 'Portofoliu';
 
   @override
-  String get bookingDetails => 'Detalii Rezervare';
+  String get bookingDetails => 'Detalii rezervare';
 
   @override
-  String get contactNo => 'Nr. Contact';
+  String get contactNo => 'Nr. de contact';
 
   @override
   String get bookedBy => 'Rezervat de';
@@ -419,7 +418,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get delete => 'Șterge';
 
   @override
-  String get deleteChat => 'Șterge Conversația';
+  String get deleteChat => 'Șterge conversația';
 
   @override
   String get doYouWantDeleteChat => 'Vrei să ștergi conversația?';
@@ -428,7 +427,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get block => 'Blochează';
 
   @override
-  String get typeMessage => 'Scrie mesaj';
+  String get typeMessage => 'Scrie un mesaj';
 
   @override
   String get success => 'Succes';
@@ -443,59 +442,59 @@ class AppLocalizationsRo extends AppLocalizations {
   String get bookingCancelledNotification => 'a anulat rezervarea';
 
   @override
-  String get welcomeToEventConnect => 'Bun venit la EventConnect';
+  String get welcomeToEventConnect => 'Bun venit în EventConnect';
 
   @override
-  String get pleaseSelectLanguage => 'Vă rugăm să selectați limba preferată';
+  String get pleaseSelectLanguage => 'Selectează limba preferată';
 
   @override
-  String get english => 'English';
+  String get english => 'Engleză';
 
   @override
   String get romanian => 'Română';
 
   @override
-  String get manageAvailability => 'Gestionează Disponibilitatea';
+  String get manageAvailability => 'Gestionează disponibilitatea';
 
   @override
   String get update => 'Actualizează';
 
   @override
-  String get view => 'Vezi';
+  String get view => 'Vizualizează';
 
   @override
   String get next => 'Următorul';
 
   @override
-  String get pleaseAddPortfolio => 'Te rugăm să adaugi portofoliul';
+  String get pleaseAddPortfolio => 'Te rugăm să adaugi un portofoliu';
 
   @override
-  String get completeAllSteps => 'Completează toți pașii';
+  String get completeAllSteps => 'Finalizează toți pașii';
 
   @override
   String get addProfile => 'Adaugă un profil';
 
   @override
-  String get upgradesPlan => 'Actualizează planul';
+  String get upgradesPlan => 'Upgradează-ți planul';
 
   @override
   String get upgradePeriodMembership =>
-      'Actualizează perioada de membru ca furnizor de servicii';
+      'Upgradează perioada de abonament ca furnizor de servicii';
 
   @override
   String get monthly => 'Lunar';
 
   @override
-  String get yearly => 'anual';
+  String get yearly => 'Anual';
 
   @override
-  String get oneMonthFree => '1 lună gratuită';
+  String get oneMonthFree => '1 lună gratuit';
 
   @override
-  String get renewAutomatically => 'Reînnoire automată';
+  String get renewAutomatically => 'Reînnoiește automat';
 
   @override
-  String get continueToPay => 'Continuă să plătești';
+  String get continueToPay => 'Continuă către plată';
 
   @override
   String get advertised => 'Promovat';
@@ -505,10 +504,10 @@ class AppLocalizationsRo extends AppLocalizations {
 
   @override
   String get noAdvertisedServiceAvailable =>
-      'Nu există serviciu promovat disponibil';
+      'Nu există servicii promovate disponibile';
 
   @override
-  String get noMessagesYet => 'Încă nu există mesaje.';
+  String get noMessagesYet => 'Niciun mesaj momentan.';
 
   @override
   String get selectDate => 'Selectează data';
@@ -526,16 +525,16 @@ class AppLocalizationsRo extends AppLocalizations {
   String get doYouWantTo => 'Vrei să';
 
   @override
-  String get noServicesFound => 'Nu s-au găsit servicii';
+  String get noServicesFound => 'Nu au fost găsite servicii';
 
   @override
-  String get dateTimeAlreadyBooked => 'Data și ora sunt deja rezervate';
+  String get dateTimeAlreadyBooked => 'Dată și oră deja rezervate';
 
   @override
-  String get serviceBooked => 'Serviciu rezervat';
+  String get serviceBooked => 'Serviciul a fost rezervat';
 
   @override
-  String get bookedYourService => 'a rezervat';
+  String get bookedYourService => 'ți-a rezervat';
 
   @override
   String get serviceAt => 'serviciul la';
@@ -547,10 +546,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get price => 'Preț';
 
   @override
-  String get doYouWantBoost => 'Vrei o promovare pentru serviciile tale?';
+  String get doYouWantBoost => 'Vrei să-ți promovezi serviciile?';
 
   @override
-  String get payPerMonth => 'Plătește 450 lei /lună';
+  String get payPerMonth => 'Plătește 450 lei / lună';
 
   @override
   String get payment => 'Plată';
@@ -559,7 +558,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get checkout => 'Finalizare comandă';
 
   @override
-  String get payForAdvertisement => 'Plătește pentru reclamă';
+  String get payForAdvertisement => 'Plătește pentru promovare';
 
   @override
   String get howWeUseInformation => 'Cum folosim informațiile tale';
@@ -580,10 +579,10 @@ class AppLocalizationsRo extends AppLocalizations {
   String get intellectualProperty => 'Proprietate intelectuală';
 
   @override
-  String get termination => 'Încetarea';
+  String get termination => 'Încheiere';
 
   @override
-  String get disclaimerOfWarranty => 'Renunțarea la garanție';
+  String get disclaimerOfWarranty => 'Declinarea garanției';
 
   @override
   String get limitationOfLiability => 'Limitarea răspunderii';
@@ -598,7 +597,7 @@ class AppLocalizationsRo extends AppLocalizations {
   String get notifications => 'Notificări';
 
   @override
-  String get noNotificationsYet => 'Încă nu există notificări';
+  String get noNotificationsYet => 'Nu există notificări';
 
   @override
   String get membership => 'Abonament';
@@ -610,13 +609,13 @@ class AppLocalizationsRo extends AppLocalizations {
   String get upcomingCompletedCancel => 'Viitoare, Finalizate, Anulate';
 
   @override
-  String get setYourSchedule => 'Setează-ți programul, Simplifică-ți ziua!';
+  String get setYourSchedule => 'Setează-ți programul, simplifică-ți ziua!';
 
   @override
-  String get manageYourPortfolio => 'Gestionează portofoliul';
+  String get manageYourPortfolio => 'Gestionează-ți portofoliul';
 
   @override
-  String get advertiseYourService => 'Promovează serviciul tău';
+  String get advertiseYourService => 'Promovează-ți serviciul';
 
   @override
   String get apple => 'Apple';

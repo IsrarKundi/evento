@@ -192,4 +192,78 @@ class SupabaseStorageService extends SupabaseConstants {
     ByteData byteData = await rootBundle.load(assetPath);
     return byteData.buffer.asUint8List();
   }
+
+  // Method to upload category gallery media (images/videos)
+  Future<String?> uploadCategoryGalleryMedia({
+    required String filePath,
+    required String mediaType, // 'image' or 'video'
+    String storageRef = "profile", // Use default bucket
+  }) async {
+    try {
+      int timeNow = DateTime.now().millisecondsSinceEpoch;
+      final fileName = path.basename(filePath);
+      final storage = Supabase.instance.client.storage.from(storageRef);
+      final file = File(filePath);
+
+      // Check if file exists
+      if (!file.existsSync()) {
+        CustomSnackBars.instance.showFailureSnackbar(
+          title: "Upload Failed",
+          message: "File does not exist at path: $filePath",
+        );
+        return null;
+      }
+
+      // Check file size (Limit: 50MB for videos, 10MB for images)
+      final fileSize = await file.length();
+      final sizeLimit = mediaType == 'video' ? 50 * 1024 * 1024 : 10 * 1024 * 1024;
+      
+      if (fileSize > sizeLimit) {
+        CustomSnackBars.instance.showFailureSnackbar(
+          title: "Upload Failed",
+          message: "File size exceeds ${mediaType == 'video' ? '50MB' : '10MB'}. Please upload a smaller file.",
+        );
+        return null;
+      }
+
+      // Upload file with media type in path for category gallery
+      final uploadPath = 'category_gallery/$mediaType/${timeNow}/$fileName';
+      await storage
+          .upload(uploadPath, file)
+          .timeout(const Duration(seconds: 120), onTimeout: () {
+        throw TimeoutException("Upload took too long. Please try again.");
+      });
+
+      // Get public URL
+      final publicUrl = storage.getPublicUrl(uploadPath);
+      log("Category gallery media uploaded: $publicUrl");
+
+      // Show success snackbar
+      CustomSnackBars.instance.showSuccessSnackbar(
+        title: "Upload Successful",
+        message: "Your ${mediaType} has been uploaded successfully.",
+      );
+
+      return publicUrl;
+    } catch (e) {
+      log("Error in uploadCategoryGalleryMedia: $e");
+
+      String errorMessage = "Something went wrong. Please try again.";
+
+      if (e is TimeoutException) {
+        errorMessage = "Upload timed out. Please check your internet connection.";
+      } else if (e.toString().contains("403")) {
+        errorMessage = "You don't have permission to upload files.";
+      } else if (e.toString().contains("StorageException")) {
+        errorMessage = "Storage error occurred while uploading.";
+      }
+
+      CustomSnackBars.instance.showFailureSnackbar(
+        title: "Upload Failed",
+        message: errorMessage,
+      );
+
+      return null;
+    }
+  }
 }
